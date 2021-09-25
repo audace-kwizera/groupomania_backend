@@ -13,6 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           models: 'Users',
+          /** clé où l'on va pointer id user */
           key: 'id'
         }
       },
