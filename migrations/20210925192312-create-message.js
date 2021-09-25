@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          models: 'Users',
+          model: 'Users',
           /** clé où l'on va pointer id user */
           key: 'id'
         }
