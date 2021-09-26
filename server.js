@@ -39,8 +39,6 @@ const errorHandler = error => {
 
 const server = http.createServer(app);
 
-server.use(bodyParser.urlencoded({ extended: true }));
-server.use(bodyParser.json());
 
 server.on('error', errorHandler);
 server.on('listening', () => {
