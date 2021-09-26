@@ -1,5 +1,6 @@
 const http = require('http');
 const app = require('./app');
+const bodyParser = require('body-parser');
 
 
 const normalizePort = val => {
@@ -13,7 +14,7 @@ const normalizePort = val => {
   }
   return false;
 };
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
 
 const errorHandler = error => {
@@ -37,6 +38,9 @@ const errorHandler = error => {
 };
 
 const server = http.createServer(app);
+
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
 
 server.on('error', errorHandler);
 server.on('listening', () => {
