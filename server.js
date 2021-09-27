@@ -1,6 +1,35 @@
-const http = require('http');
-const app = require('./app');
-const bodyParser = require('body-parser');
+/**
+ * Importation du package http
+ */
+const express = require('express');
+const app = express();
+const db = require('./models');
+const PORT = process.env.PORT || 3000;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+const apiRoutes = require('./apiRoutes');
+app.use('/api', apiRoutes);
+
+db.sequelize.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`listening on http://localhost:${PORT}`);
+  });
+});
+
+
+
+
+
+
+ 
+ /*
+ // Pour résoudre une erreur inconnue lors de la création d'un user depuis le front.
+ const cors = require('cors');
+ app.use(cors()) 
+ // ------------------------------------------------------------------------------
+ 
 
 
 const normalizePort = val => {
@@ -14,7 +43,7 @@ const normalizePort = val => {
   }
   return false;
 };
-const port = normalizePort(process.env.PORT || '8080');
+const port = normalizePort(process.env.PORT || '3306');
 app.set('port', port);
 
 const errorHandler = error => {
@@ -47,4 +76,4 @@ server.on('listening', () => {
   console.log('Listening on ' + bind);
 });
 
-server.listen(port);
+server.listen(port);*/
