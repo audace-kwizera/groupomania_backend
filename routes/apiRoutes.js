@@ -29,6 +29,9 @@ router.get('/login', (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 });
 
+/**
+ * Pour chercher un seul utiliser findOne
+ */
 
 
 
